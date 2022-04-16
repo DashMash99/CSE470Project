@@ -6,11 +6,11 @@
         <div class="col-lg-4">
             <img class="thumbnail" src="{{product.imageURL}}">
             <div class="box-element product">
-                <h6><strong>{{product.name}}</strong></h6>
+                <h5><strong>{{product.name}}</strong></h5>
                 <hr>
-                <button data-product="{{product.id}}" data-action="add" class="btn btn-outline-secondary add-btn update-cart">Add to Cart</button>
+                <button data-product="{{product.id}}" data-action="add" class="btn btn-outline-danger add-btn update-cart">Add to Cart</button>
                 <a class="btn btn-outline-success" href="#">View</a>
-                <h4 style="display: inline-block; float: right"><strong>${{product.pricePerDay|floatformat:2}}</strong></h4>
+                <h4 style="display: inline-block; float: right"><strong>BDT/Day:{{product.pricePerDay|floatformat:2}}</strong></h4>
             </div>
         </div>
         {% endfor %}
