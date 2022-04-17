@@ -10,50 +10,27 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login
 # Create your views here.
 
-# def register(request):
-#     if request.user.is_authenticated:
-#         return HttpResponse('You are already registered and logged in')
-#     else:
-#         form = RegistrationForm()
-#         if request.method == 'post' or request.method == 'POST':
-#             form = RegistrationForm(request.POST)
-#             if form.is_valid():
-#                 form.save()
-#                 return HttpResponse('You are now registered and can log in')
-
-#     context = {'form': form}
-    
-#     return render(request, 'clothingStore/register.html', context)
-
-# def Customerlogin(request):
-#     if request.user.is_authenticated:
-#         return redirect('/dashboard')
-#     else:
-#         if request.method == 'POST' or request.method == 'post':
-#             username = request.POST.get('username')
-#             password = request.POST.get('password')
-#             customer = authenticate(request, username=username, password=password)
-#             if customer is not None:
-#                 login(request, customer)
-#                 return redirect('dashboard')
-#             else:
-#                 return redirect('/login')
-
-#     return render(request, 'clothingStore/login.html')
-
-
 def loginPage(request):
     if request.method == 'POST':
         username = request.POST.get('username')
         password = request.POST.get('password')
         customer = authenticate(request, username=username, password=password)
+        print(username)
+        print(password)
         print('User:', customer)
 
         if customer is not None:
             login(request, customer)
-            return redirect('/')
-        else:
+            print("If: ", username)
+            print("If: ", password)
+            print('User:', customer)
             return redirect('/dashboard')
+        else:
+            print("else: ", username)
+            print("else: ",password)
+            print('User:', customer)
+            return redirect('/login')
+
 
     return render(request, 'clothingStore/login_Register.html')
 
