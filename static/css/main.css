@@ -99,3 +99,13 @@ h1,h2,h3,h4,h5,h6{
 	display: none!important;
 }
 
+.container-fluid-nav{
+	text-align: center;
+	background-color: #5122aa;
+	padding-left: 125px;
+	padding-top: 10px;
+	font-family: 'Roboto', sans-serif;
+	font-size: 25px;
+	color: gold;
+	
+}

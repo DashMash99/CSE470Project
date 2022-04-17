@@ -1,6 +1,7 @@
 {% extends 'clothingStore/main.html' %}
 {% load static %}
 {% block content %}
+     
     <div class="row">
         {% for product in products %}
         <div class="col-lg-4">
@@ -9,7 +10,6 @@
                 <h5><strong>{{product.name}}</strong></h5>
                 <hr>
                 <button data-product="{{product.id}}" data-action="add" class="btn btn-outline-danger add-btn update-cart">Add to Cart</button>
-                <a class="btn btn-outline-success" href="#">View</a>
                 <h4 style="display: inline-block; float: right"><strong>BDT/Day:{{product.pricePerDay|floatformat:2}}</strong></h4>
             </div>
         </div>
