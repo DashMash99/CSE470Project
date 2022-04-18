@@ -4,13 +4,14 @@ import json
 import datetime
 from .models import *
 from .utils import cookieCart, cartData, guestOrder
-# from .forms import RegistrationForm
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.forms import UserCreationForm
 # Create your views here.
 
-def loginPage(request):
+def loginUser(request):
+    page = 'login'
     if request.method == 'POST':
         username = request.POST.get('username')
         password = request.POST.get('password')
@@ -21,18 +22,14 @@ def loginPage(request):
 
         if customer is not None:
             login(request, customer)
-            print("If: ", username)
-            print("If: ", password)
-            print('User:', customer)
             return redirect('/dashboard')
-        else:
-            print("else: ", username)
-            print("else: ",password)
-            print('User:', customer)
-            return redirect('/login')
 
 
-    return render(request, 'clothingStore/login_Register.html')
+    return render(request, 'clothingStore/loginUser.html', {'page': page})
+
+def logoutUser(request):
+    logout(request)
+    return redirect('/dashboard')
 
 def dashboard(request):
     data = cartData(request)
@@ -53,13 +50,6 @@ def checkout(request):
          
     return render(request, 'clothingStore/checkout.html', context)
 
-
-
-def uploaditem(request):
-    return render(request, 'clothingStore/uploadItem.html')
-
-def viewproduct(request):
-    return render(request, 'clothingStore/viewProduct.html')
 
 def confirmorder(request):
 
