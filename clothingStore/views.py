@@ -63,6 +63,7 @@ def confirmorder(request):
 
 def updateItem(request):
     data = json.loads(request.body)
+    print("DATA ",data)
     productId = data['productId']
     action = data['action']
 
@@ -89,6 +90,7 @@ def updateItem(request):
 def processOrder(request):
     transaction_id = datetime.datetime.now().timestamp()
     data = json.loads(request.body)
+    print("DATA ",data)
 
     if request.user.is_authenticated:
         customer = request.user.customer

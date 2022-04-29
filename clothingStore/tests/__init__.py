@@ -1,0 +1,1 @@
+from clothingStore.models import *
